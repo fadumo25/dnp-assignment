@@ -1,4 +1,4 @@
-﻿using InMemoryRepositories;
+﻿using FileRepositories;
 using RepositoryContracts;
 using Server.CliApp.UI;
 
@@ -8,12 +8,10 @@ class Program
 {
     static void Main()
     {
-        // In-memory repositories
-        IUserRepository userRepo = new InMemoryUserRepository();
-        IPostRepository postRepo = new InMemoryPostRepository();
-        ICommentRepository commentRepo = new InMemoryCommentRepository();
+        IUserRepository userRepo = new UserFileRepository();
+        IPostRepository postRepo = new PostFileRepository();
+        ICommentRepository commentRepo = new CommentFileRepository();
 
-        // Start CLI
         var app = new Cli(userRepo, postRepo, commentRepo);
         app.Run();
     }
